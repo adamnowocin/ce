@@ -5126,7 +5126,7 @@ var jexcel = (function(el, options) {
                                 // Null
                                 evalstring += "var " + tokens[i] + " = null;";
                             } else {
-                                if (value == Number(value) && obj.options.autoCasting == true) {
+                                if (value == Number(value) && obj.options.autoCasting == true && (/^[\-]?([1-9][0-9]*([.,][0-9]+)?|0[.,][0-9]+)$/).test(value)) {
                                     // Number
                                     evalstring += "var " + tokens[i] + " = " + Number(value) + ";";
                                 } else {

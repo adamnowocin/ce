@@ -5141,13 +5141,13 @@ if (! jSuites && typeof(require) === 'function') {
                                     // Null
                                     evalstring += "var " + tokens[i] + " = null;";
                                 } else {
-                                    if (value == Number(value) && obj.options.autoCasting == true) {
+                                    if (value == Number(value) && obj.options.autoCasting == true && (/^[\-]?([1-9][0-9]*([.,][0-9]+)?|0[.,][0-9]+)$/).test(value)) {
                                         // Number
                                         evalstring += "var " + tokens[i] + " = " + Number(value) + ";";
                                     } else {
                                         // Trying any formatted number
                                         var number = obj.parseNumber(value, position[0])
-                                        if (obj.options.autoCasting == true && number) {
+                                        if (obj.options.autoCasting == true && number && (/^[\-]?([1-9][0-9]*([.,][0-9]+)?|0[.,][0-9]+)$/).test(value)) {
                                             // Render as number
                                             evalstring += "var " + tokens[i] + " = " + number + ";";
                                         } else {
